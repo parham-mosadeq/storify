@@ -30,8 +30,6 @@ const fetchProducts = () => {
         dispatch(fetchProductsSuccess(resp.data));
       })
       .catch((err) => {
-        const errorMsg = err.massage;
-
         dispatch(fetchProductsFailed(err.massage));
       });
   };
