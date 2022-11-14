@@ -22,19 +22,17 @@ const fetchProductsFailed = (error) => {
 
 const fetchProducts = () => {
   return (dispatch) => {
+    console.log(134);
     dispatch(fetchProductsReq());
-
     axios
       .get('https://api.escuelajs.co/api/v1/products')
       .then((resp) => {
-        const products = resp.data;
-
-        dispatch(fetchProductsSuccess(products));
+        dispatch(fetchProductsSuccess(resp.data));
       })
       .catch((err) => {
         const errorMsg = err.massage;
 
-        dispatch(fetchProductsFailed(errorMsg));
+        dispatch(fetchProductsFailed(err.massage));
       });
   };
 };

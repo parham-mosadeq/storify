@@ -6,14 +6,21 @@ const initState = {
 const ProductsReducer = (state = initState, action) => {
   switch (action.type) {
     case 'REQUEST':
-      console.log('req...');
-      return {};
+      return {
+        ...state,
+        isLoading: true,
+      };
     case 'SUCCESS':
-      console.log('suc...');
-      return {};
+      return {
+        ...state,
+        isLoading: false,
+        products: action.payload,
+      };
     case 'FAILED':
-      console.log('fai...');
-      return {};
+      return {
+        ...state,
+        isLoading: false,
+      };
 
     default:
       return state;

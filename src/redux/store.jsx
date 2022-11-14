@@ -1,13 +1,12 @@
 import ProductsReducer from './products/reducersProducts';
-
-import { configureStore } from '@reduxjs/toolkit';
-
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
 const store = configureStore({
   reducer: {
     productsState: ProductsReducer,
   },
-  middleware: [logger],
+  middleware: [logger, thunk],
 });
 
 export default store;
