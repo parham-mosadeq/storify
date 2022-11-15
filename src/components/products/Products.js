@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
+// redux
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/products/actionsProducts';
+// components
 import Product from './ProductsCart';
-
+import Loader from '../layouts/Loader';
+import Filters from '../filters/Filters';
 const Products = () => {
   const dispatch = useDispatch();
 
   const products = useSelector((state) => state.productsState.products);
   const isLoading = useSelector((state) => state.productsState.isLoading);
-  const errorMsg = useSelector((state) => state.productsState.error);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -16,8 +18,10 @@ const Products = () => {
 
   return (
     <div>
+      <div>
+        <Filters />
+      </div>
       <h1> products</h1>
-
       <div>
         {!isLoading ? (
           products.map((item, idx) => {
@@ -29,7 +33,7 @@ const Products = () => {
             );
           })
         ) : (
-          <h1>notfound</h1>
+          <Loader />
         )}
       </div>
     </div>

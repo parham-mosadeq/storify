@@ -11,6 +11,8 @@ import Notfound from './components/layouts/Notfound';
 import AboutUs from './components/layouts/AboutUs';
 import Navbar from './components/layouts/Navbar';
 import Cart from './components/cart/Cart';
+import Product from './components/products/Product';
+import Categories from './components/category/Categories';
 const App = () => {
   return (
     <Provider store={store}>
@@ -20,10 +22,24 @@ const App = () => {
       </>
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/products' element={<Products />}></Route>
-        <Route path='/aboutUs' element={<AboutUs />}></Route>
-        <Route path='/cart' element={<Cart />}></Route>
 
+        {/* products routes start*/}
+        <Route path='/products' element={<Products />}></Route>
+        <Route path='products/:id' element={<Product />}></Route>
+
+        {/* products routes end */}
+        {/* cat start */}
+        <Route
+          path='/products/categories/:category'
+          element={<Categories />}
+        ></Route>
+        {/* cat end */}
+        {/* about us start */}
+        <Route path='/aboutUs' element={<AboutUs />}></Route>
+        {/* about us end */}
+
+        <Route path='/cart' element={<Cart />}></Route>
+        {/* notfound */}
         <Route path='/notfound' element={<Notfound />}></Route>
         <Route path='*' element={<Navigate to='notfound' />}></Route>
       </Routes>

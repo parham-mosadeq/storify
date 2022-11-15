@@ -1,9 +1,11 @@
 import React from 'react';
 // function
-import { trimTitle } from '../../services/functions';
+import { trimDesc, trimTitle } from '../../services/functions';
+// router
+import { Link } from 'react-router-dom';
 const Product = ({ item }) => {
   // *destructuring objects
-  const { id, title, price, description, images } = item;
+  const { id, title, price, description, image, category } = item;
 
   const styles = {
     width: '20%',
@@ -17,14 +19,30 @@ const Product = ({ item }) => {
 
       <article>
         {/* image start */}
-        <img style={styles} src={images} alt={title} />
+        <img style={styles} src={image} alt={title} />
         {/* image end */}
         {/* desc start */}
         <div>
-          <div>{trimTitle(title)}</div>
-          <p>{description}</p>
+          <div>
+            <Link to={`/products/${id}`}>{trimTitle(title)}</Link>
+          </div>
+          <p>{trimDesc(description)}</p>
         </div>
         {/* desc end */}
+
+        <div>
+          <div>
+            <p>{price}$</p>
+          </div>
+          <p>{category}</p>
+        </div>
+        {/* buttons start */}
+        <div>
+          <button>+</button>
+          <button>-</button>
+          <button>delete</button>
+        </div>
+        {/* buttons end */}
       </article>
 
       {/* container end */}

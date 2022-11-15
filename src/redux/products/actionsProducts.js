@@ -24,7 +24,7 @@ const fetchProducts = () => {
   return (dispatch) => {
     dispatch(fetchProductsReq());
     axios
-      .get('https://api.escuelajs.co/api/v1/products')
+      .get('https://fakestoreapi.com/products')
       .then((resp) => {
         const products = resp.data;
         dispatch(fetchProductsSuccess(products));
