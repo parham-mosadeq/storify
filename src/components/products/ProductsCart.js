@@ -3,7 +3,7 @@ import React from 'react';
 import { trimDesc, trimTitle } from '../../services/functions';
 // router
 import { Link } from 'react-router-dom';
-const Product = ({ item }) => {
+const ProductCart = ({ item }) => {
   // *destructuring objects
   const { id, title, price, description, image, category } = item;
 
@@ -50,4 +50,4 @@ const Product = ({ item }) => {
   );
 };
 
-export default Product;
+export default ProductCart;
