@@ -1,6 +1,7 @@
 const initState = {
   isLoading: false,
   products: [],
+  error: '',
 };
 
 const ProductsReducer = (state = initState, action) => {
@@ -10,16 +11,16 @@ const ProductsReducer = (state = initState, action) => {
         ...state,
         isLoading: true,
       };
-    case 'SUCCESS':
+    case 'SUCCESS_REQ':
       return {
-        ...state,
         isLoading: false,
         products: action.payload,
       };
-    case 'FAILED':
+    case 'FAILED_REQ':
       return {
         ...state,
         isLoading: false,
+        error: action.payload,
       };
 
     default:

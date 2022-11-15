@@ -6,7 +6,7 @@ const store = configureStore({
   reducer: {
     productsState: ProductsReducer,
   },
-  middleware: [logger, thunk],
+  middleware: [thunk, logger],
 });
 
 export default store;

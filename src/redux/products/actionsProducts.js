@@ -15,19 +15,19 @@ const fetchProductsSuccess = (products) => {
 
 const fetchProductsFailed = (error) => {
   return {
-    type: 'FAILED',
+    type: 'FAILED_REQ',
     payload: error,
   };
 };
 
 const fetchProducts = () => {
   return (dispatch) => {
-    console.log(134);
     dispatch(fetchProductsReq());
     axios
       .get('https://api.escuelajs.co/api/v1/products')
       .then((resp) => {
-        dispatch(fetchProductsSuccess(resp.data));
+        const products = resp.data;
+        dispatch(fetchProductsSuccess(products));
       })
       .catch((err) => {
         dispatch(fetchProductsFailed(err.massage));
