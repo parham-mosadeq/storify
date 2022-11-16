@@ -20,6 +20,48 @@ const fetchProductsFailed = (error) => {
   };
 };
 
+// filters functions start
+const lowPrice = (lp, target) => {
+  return {
+    type: 'LOW_P',
+    payload: { lp, target },
+  };
+};
+const highPrice = (hp, target) => {
+  return {
+    type: 'HIGH_P',
+    payload: { hp, target },
+  };
+};
+const menClothing = (mc, target) => {
+  return {
+    type: 'MEN_CLOTHING',
+    payload: { mc, target },
+  };
+};
+const jewelery = (jy, target) => {
+  return {
+    type: 'JEWLERY',
+    payload: { jy, target },
+  };
+};
+const electro = (el, target) => {
+  return {
+    type: 'ELECTRO',
+    payload: { el, target },
+  };
+};
+
+const women = (wc, target) => {
+  return {
+    type: 'WOMEN',
+    payload: { wc, target },
+  };
+};
+
+// filters functions end
+
+// fetching function
 const fetchProducts = () => {
   return (dispatch) => {
     dispatch(fetchProductsReq());
@@ -35,4 +77,12 @@ const fetchProducts = () => {
   };
 };
 
-export { fetchProducts };
+export {
+  fetchProducts,
+  women,
+  electro,
+  jewelery,
+  menClothing,
+  highPrice,
+  lowPrice,
+};

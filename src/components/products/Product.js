@@ -22,7 +22,6 @@ const Product = () => {
       {product &&
         product.map((item) => {
           if (item.id === +id) {
-            console.log(item);
             const {
               id,
               image,
@@ -51,7 +50,7 @@ const Product = () => {
           }
         })}
 
-      <button onClick={() => nav(-1)}>back to products</button>
+      <button onClick={() => nav('/products')}>back to products</button>
     </div>
   );
 };

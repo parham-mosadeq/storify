@@ -8,14 +8,12 @@ import {
   menClothing,
   highPrice,
   lowPrice,
-} from '../../redux/filters/actionsFilters';
+} from '../../redux/products/actionsProducts';
 import { fetchProducts } from '../../redux/products/actionsProducts';
 
 const Filters = () => {
   const mainArray = useSelector((state) => state.productsState.products);
-  const filteredArray = useSelector((state) =>
-    console.log(state.filterState.filteredArray)
-  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,8 +28,10 @@ const Filters = () => {
       <div>
         <label>low prices</label>
         <input
+          value='lowPrice'
+          name='filters'
           onClick={(e) => {
-            dispatch(lowPrice(mainArray));
+            dispatch(lowPrice(mainArray, e.target.checked));
           }}
           type='checkbox'
         />
@@ -41,26 +41,51 @@ const Filters = () => {
       {/* highest start */}
       <div>
         <label>high prices</label>
-        <input onClick={(e) => highPrice(e.target.checked)} type='checkbox' />
+        <input
+          value='highPrice'
+          name='filtersPrice'
+          onClick={(e) => dispatch(highPrice(mainArray, e.target.checked))}
+          type='checkbox'
+        />
       </div>
       {/* highest end */}
 
       {/* cat starts */}
       <div>
         <label>men's clothing</label>
-        <input onClick={(e) => menClothing(e.target.checked)} type='checkbox' />
+        <input
+          onClick={(e) => dispatch(menClothing(mainArray, e.target.checked))}
+          name='filtersPrice'
+          type='checkbox'
+          value='menClothing'
+        />
       </div>
       <div>
         <label>jewelery</label>
-        <input onClick={(e) => jewelery(e.target.checked)} type='checkbox' />
+        <input
+          value='jewlery'
+          name='filters'
+          onClick={(e) => dispatch(jewelery(mainArray, e.target.checked))}
+          type='checkbox'
+        />
       </div>
       <div>
         <label>electronics</label>
-        <input onClick={(e) => electro(e.target.checked)} type='checkbox' />
+        <input
+          onClick={(e) => dispatch(electro(mainArray, e.target.checked))}
+          name='filters'
+          type='checkbox'
+          value='electronics'
+        />
       </div>
       <div>
         <label>women's clothing</label>
-        <input onClick={(e) => women(e.target.checked)} type='checkbox' />
+        <input
+          onClick={(e) => dispatch(women(mainArray, e.target.checked))}
+          name='filters'
+          type='checkbox'
+          value='womenClothing'
+        />
       </div>
       {/* cat end */}
       {/* filters end */}

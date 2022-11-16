@@ -12,9 +12,6 @@ const Products = () => {
   const products = useSelector((state) => state.productsState.products);
   const isLoading = useSelector((state) => state.productsState.isLoading);
 
-  // *filtered arrays
-  const filteredArray = useSelector((state) => state.filterState.filteredArray);
-
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
