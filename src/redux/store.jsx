@@ -7,7 +7,8 @@ const store = configureStore({
   reducer: {
     productsState: ProductsReducer,
   },
-  middleware: [thunk],
+  // middleware: [thunk],
+  middleware: [thunk, logger],
 });
 
 export default store;
