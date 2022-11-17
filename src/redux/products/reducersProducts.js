@@ -4,6 +4,7 @@ const initState = {
   error: '',
   lowPrice: false,
   highPrice: false,
+  selectedArrays: [],
 };
 
 const ProductsReducer = (state = initState, action) => {
@@ -174,7 +175,8 @@ const ProductsReducer = (state = initState, action) => {
         };
       }
 
-    // filters end
+    //! filters end
+
     default:
       return state;
   }

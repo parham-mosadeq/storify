@@ -20,7 +20,7 @@ const fetchProductsFailed = (error) => {
   };
 };
 
-// filters functions start
+// *filters functions start
 const lowPrice = (lp, target) => {
   return {
     type: 'LOW_P',
@@ -59,9 +59,34 @@ const women = (wc, target) => {
   };
 };
 
-// filters functions end
+//! filters functions end
 
-// fetching function
+// // *buttons handlers start
+
+// const add = (id) => {
+//   return {
+//     type: 'ADD',
+//     payload: id,
+//   };
+// };
+
+// const minus = (id) => {
+//   return {
+//     type: 'MINUS',
+//     payload: id,
+//   };
+// };
+
+// const remove = (id) => {
+//   return {
+//     type: 'REMOVE',
+//     payload: id,
+//   };
+// };
+
+// // !buttons handlers end
+
+// *fetching function
 const fetchProducts = () => {
   return (dispatch) => {
     dispatch(fetchProductsReq());
@@ -85,4 +110,7 @@ export {
   menClothing,
   highPrice,
   lowPrice,
+  // remove,
+  // add,
+  // minus,
 };

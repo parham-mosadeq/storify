@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // function
 import { trimDesc, trimTitle } from '../../services/functions';
 // router
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+// function
+import { isInCart, quantityCount } from '../../services/functions';
+// import { remove, add, minus } from '../../redux/products/actionsProducts';
+import {
+  remove,
+  add,
+  decrement,
+  increment,
+} from '../../redux/buttons/actionsBtn';
 const ProductCart = ({ item }) => {
   // *destructuring objects
   const { id, title, price, description, image, category } = item;
@@ -13,6 +23,12 @@ const ProductCart = ({ item }) => {
     height: '20%',
   };
 
+  const dispatch = useDispatch();
+  const selectedArray = useSelector(
+    (state) => state.btnState.selectedItemsArray
+  );
+
+  console.log(selectedArray);
   return (
     <main>
       {/* container start */}
@@ -38,9 +54,22 @@ const ProductCart = ({ item }) => {
         </div>
         {/* buttons start */}
         <div>
-          <button>+</button>
-          <button>-</button>
-          <button>delete</button>
+          {isInCart(selectedArray, id) ? (
+            <>
+              <button onClick={() => dispatch(increment(id))}>+</button>
+            </>
+          ) : (
+            <button onClick={() => dispatch(add(id, item))}>add</button>
+          )}
+
+          {quantityCount(selectedArray, id) > 1
+           && (
+            <button onClick={() => dispatch(decrement(id))}>-</button>
+          )}
+
+          {quantityCount(selectedArray, id) === 1 && (
+            <button onClick={() => dispatch(remove(id))}>delete</button>
+          )}
         </div>
         {/* buttons end */}
       </article>

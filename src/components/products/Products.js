@@ -13,7 +13,9 @@ const Products = () => {
   const isLoading = useSelector((state) => state.productsState.isLoading);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    if (!products.length > 0) {
+      dispatch(fetchProducts());
+    }
   }, []);
 
   return (

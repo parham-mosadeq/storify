@@ -47,6 +47,8 @@ const Product = () => {
                 </div>
               </div>
             );
+          } else {
+            return [];
           }
         })}
 
