@@ -11,14 +11,17 @@ const sumItems = (items) => {
     0
   );
   let total = items.reduce((total, product) => {
-    return (total + product.price * product.quantity, 0).toFixed(2);
+    console.log(12323);
+    console.log(123);
+    // return (total + product.selectedItems.price * product.quantity, 0).toFixed(
+    //   2
+    // );
   });
 
-  return { itemsCounter, total };
+  return { itemsCounter };
 };
 
 const reducerBtn = (state = initState, action) => {
-  console.log(state);
   switch (action.type) {
     // * buttons start
 

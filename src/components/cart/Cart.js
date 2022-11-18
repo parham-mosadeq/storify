@@ -7,12 +7,13 @@ import { clear, checkout } from '../../redux/buttons/actionsBtn';
 const Cart = () => {
   const state = useSelector((state) => state.btnState);
 
-  console.log(state);
-
   const dispatch = useDispatch();
 
+  console.log(state);
   return (
     <div>
+      {/* <p>total items price: {state.total}</p> */}
+      <p>total items counts: {state.itemsCounter}</p>
       <div>
         {!state.checkout ? (
           state.selectedItemsArray ? (
@@ -20,10 +21,7 @@ const Cart = () => {
               console.log(item);
               return (
                 <div key={item.id}>
-                  <div>
-                    {/* <p>total items price: {state.total}</p> */}
-                    <p>total items counts: {state.itemsCounter}</p>
-                  </div>
+                  <div></div>
                   <img
                     width={60}
                     src={item.selectedItems.image}
