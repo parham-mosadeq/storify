@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // function
 import { trimDesc, trimTitle } from '../../services/functions';
 // router
@@ -28,7 +28,8 @@ const ProductCart = ({ item }) => {
     (state) => state.btnState.selectedItemsArray
   );
 
-  console.log(selectedArray);
+  // const products = useSelector((state) => state.productsState.products);
+
   return (
     <main>
       {/* container start */}
@@ -36,7 +37,6 @@ const ProductCart = ({ item }) => {
       <article>
         {/* image start */}
         <img style={styles} src={image} alt={title} />
-        {/* image end */}
         {/* desc start */}
         <div>
           <div>
@@ -45,7 +45,6 @@ const ProductCart = ({ item }) => {
           <p>{trimDesc(description)}</p>
         </div>
         {/* desc end */}
-
         <div>
           <div>
             <p>{price}$</p>
@@ -54,21 +53,19 @@ const ProductCart = ({ item }) => {
         </div>
         {/* buttons start */}
         <div>
-          {isInCart(selectedArray, id) ? (
-            <>
-              <button onClick={() => dispatch(increment(id))}>+</button>
-            </>
-          ) : (
-            <button onClick={() => dispatch(add(id, item))}>add</button>
-          )}
-
-          {quantityCount(selectedArray, id) > 1
-           && (
-            <button onClick={() => dispatch(decrement(id))}>-</button>
-          )}
-
           {quantityCount(selectedArray, id) === 1 && (
             <button onClick={() => dispatch(remove(id))}>delete</button>
+          )}
+          {quantityCount(selectedArray, id) > 1 && (
+            <button onClick={() => dispatch(decrement(id))}>-</button>
+          )}
+          {quantityCount(selectedArray, id) > 0 && (
+            <span>{quantityCount(selectedArray, id)} </span>
+          )}
+          {isInCart(selectedArray, id) ? (
+            <button onClick={() => dispatch(increment(id))}>+</button>
+          ) : (
+            <button onClick={() => dispatch(add(id, item))}>Add to Cart</button>
           )}
         </div>
         {/* buttons end */}

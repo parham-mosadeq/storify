@@ -9,11 +9,12 @@ const Product = () => {
   const dispatch = useDispatch();
 
   const product = useSelector((state) => state.productsState.products);
-  console.log(product);
   const id = window.location.pathname.slice(-1);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    if (product.length === 0) {
+      dispatch(fetchProducts());
+    }
   }, []);
 
   const nav = useNavigate();

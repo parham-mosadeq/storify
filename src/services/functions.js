@@ -19,17 +19,17 @@ const trimDesc = (txt) => {
   return joined;
 };
 
-const isInCart = (selectedItemsArray, id) => {
-  const result = !!selectedItemsArray.find((item) => item.id === id);
+const isInCart = (state, id) => {
+  const result = !!state.find((item) => item.id === id);
   return result;
 };
 
-const quantityCount = (selectedArr, id) => {
-  const index = selectedArr.findIndex((item) => item.id === id);
+const quantityCount = (state, id) => {
+  const index = state.findIndex((item) => item.id === id);
   if (index === -1) {
     return false;
   } else {
-    return isInCart(selectedArr, id) && selectedArr[index].quantity;
+    return state[index].quantity;
   }
 };
 

@@ -27,6 +27,17 @@ const remove = (id) => {
   };
 };
 
+const clear = () => {
+  return {
+    type: 'CLEAR',
+  };
+};
+const checkout = () => {
+  return {
+    type: 'CHECKOUT',
+  };
+};
+
 // !buttons handlers end
 
-export { remove, decrement, add, increment };
+export { remove, decrement, add, increment, checkout, clear };

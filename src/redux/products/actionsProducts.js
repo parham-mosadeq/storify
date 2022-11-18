@@ -61,31 +61,6 @@ const women = (wc, target) => {
 
 //! filters functions end
 
-// // *buttons handlers start
-
-// const add = (id) => {
-//   return {
-//     type: 'ADD',
-//     payload: id,
-//   };
-// };
-
-// const minus = (id) => {
-//   return {
-//     type: 'MINUS',
-//     payload: id,
-//   };
-// };
-
-// const remove = (id) => {
-//   return {
-//     type: 'REMOVE',
-//     payload: id,
-//   };
-// };
-
-// // !buttons handlers end
-
 // *fetching function
 const fetchProducts = () => {
   return (dispatch) => {

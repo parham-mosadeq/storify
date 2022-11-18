@@ -28,17 +28,20 @@ const App = () => {
         <Route path='products/:id' element={<Product />}></Route>
 
         {/* products routes end */}
+
         {/* cat start */}
         <Route
           path='/products/categories/:category'
           element={<Categories />}
         ></Route>
         {/* cat end */}
+
         {/* about us start */}
         <Route path='/aboutUs' element={<AboutUs />}></Route>
         {/* about us end */}
 
         <Route path='/cart' element={<Cart />}></Route>
+
         {/* notfound */}
         <Route path='/notfound' element={<Notfound />}></Route>
         <Route path='*' element={<Navigate to='notfound' />}></Route>
