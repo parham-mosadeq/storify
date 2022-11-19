@@ -29,7 +29,6 @@ const ProductCart = ({ item }) => {
   );
 
   // const products = useSelector((state) => state.productsState.products);
-  console.log(selectedArray);
   return (
     <main>
       {/* container start */}
