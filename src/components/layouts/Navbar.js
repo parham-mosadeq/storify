@@ -26,7 +26,7 @@ const Navbar = () => {
       <div>
         <div>
           <p>{itemsCounter}</p>
-          <span>🛒</span>
+          <Link to='/cart'>🛒</Link>
         </div>
       </div>
     </>

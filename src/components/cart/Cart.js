@@ -30,6 +30,7 @@ const Cart = () => {
                   <div>
                     <p>name: {item.selectedItems.title}</p>
                     <p>price: {item.selectedItems.price}$</p>
+                    <p>chosen products quantity: {item.quantity}</p>
                   </div>
                 </div>
               );
@@ -42,9 +43,14 @@ const Cart = () => {
         )}
       </div>
       <div>
-        <button onClick={() => dispatch(clear())}>clear Cart</button>
-
-        <button onClick={() => dispatch(checkout())}>checkout</button>
+        {!state.itemsCounter ? (
+          <button onClick={() => dispatch(clear())}>clear Cart</button>
+        ) : (
+          <>
+            <button onClick={() => dispatch(clear())}>clear Cart</button>
+            <button onClick={() => dispatch(checkout())}>checkout</button>
+          </>
+        )}
       </div>
     </div>
   );

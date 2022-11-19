@@ -7,7 +7,7 @@ const initState = {
   selectedArrays: [],
 };
 
-const ProductsReducer = (state = initState, action) => {
+const reducerProducts = (state = initState, action) => {
   switch (action.type) {
     case 'REQUEST':
       return {
@@ -182,4 +182,4 @@ const ProductsReducer = (state = initState, action) => {
   }
 };
 
-export default ProductsReducer;
+export default reducerProducts;

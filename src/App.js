@@ -13,6 +13,7 @@ import Navbar from './components/layouts/Navbar';
 import Cart from './components/cart/Cart';
 import Product from './components/products/Product';
 import Categories from './components/category/Categories';
+import Comments from './components/comments/Comments';
 const App = () => {
   return (
     <Provider store={store}>
@@ -25,7 +26,9 @@ const App = () => {
 
         {/* products routes start*/}
         <Route path='/products' element={<Products />}></Route>
-        <Route path='products/:id' element={<Product />}></Route>
+        <Route path='products/:id/' element={<Product />}>
+          <Route path='comments' element={<Comments />}></Route>
+        </Route>
 
         {/* products routes end */}
 
@@ -40,6 +43,7 @@ const App = () => {
         <Route path='/aboutUs' element={<AboutUs />}></Route>
         {/* about us end */}
 
+        <Route path='/cart' element={<Cart />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
 
         {/* notfound */}

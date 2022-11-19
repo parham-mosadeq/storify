@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // redux
 import {
@@ -9,18 +9,11 @@ import {
   highPrice,
   lowPrice,
 } from '../../redux/products/actionsProducts';
-import { fetchProducts } from '../../redux/products/actionsProducts';
 
 const Filters = () => {
   const mainArray = useSelector((state) => state.productsState.products);
 
   const dispatch = useDispatch();
-
-  const [isPrice, setIsPrice] = useState(false);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
 
   return (
     <div>
@@ -48,7 +41,6 @@ const Filters = () => {
           value='highPrice'
           name='filtersPrice'
           onClick={(e) => {
-            setIsPrice(false);
             dispatch(highPrice(mainArray, e.target.checked));
           }}
           type='checkbox'

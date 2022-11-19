@@ -29,7 +29,7 @@ const ProductCart = ({ item }) => {
   );
 
   // const products = useSelector((state) => state.productsState.products);
-
+  console.log(selectedArray);
   return (
     <main>
       {/* container start */}
@@ -60,7 +60,7 @@ const ProductCart = ({ item }) => {
             <button onClick={() => dispatch(decrement(id))}>-</button>
           )}
           {quantityCount(selectedArray, id) > 0 && (
-            <span>{quantityCount(selectedArray, id)} </span>
+            <span> {quantityCount(selectedArray, id)} </span>
           )}
           {isInCart(selectedArray, id) ? (
             <button onClick={() => dispatch(increment(id))}>+</button>
