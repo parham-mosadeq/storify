@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/products/actionsProducts';
+import { fetchComments } from '../../redux/comments/actionsComments';
+
 // components
 import ProductCart from './ProductsCart';
 import Loader from '../layouts/Loader';
@@ -16,6 +18,7 @@ const Products = () => {
     if (!products.length > 0) {
       dispatch(fetchProducts());
     }
+    dispatch(fetchComments());
   }, []);
 
   return (

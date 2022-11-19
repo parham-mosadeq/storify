@@ -26,9 +26,7 @@ const App = () => {
 
         {/* products routes start*/}
         <Route path='/products' element={<Products />}></Route>
-        <Route path='products/:id/' element={<Product />}>
-          <Route path='comments' element={<Comments />}></Route>
-        </Route>
+        <Route path='/products/:id/*' element={<Product />}></Route>
 
         {/* products routes end */}
 

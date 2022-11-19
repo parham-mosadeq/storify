@@ -33,4 +33,10 @@ const quantityCount = (state, id) => {
   }
 };
 
-export { trimTitle, trimDesc, isInCart, quantityCount };
+const shuffle = (arr) => {
+  const shuffled = arr.sort(() => 0.5 - Math.random());
+
+  return shuffled;
+};
+
+export { trimTitle, trimDesc, isInCart, quantityCount, shuffle };

@@ -3,7 +3,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/products/actionsProducts';
 // router
-import { useNavigate } from 'react-router-dom';
+import { Link, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
+import Comments from '../comments/Comments';
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ const Product = () => {
   const nav = useNavigate();
   return (
     <div>
+      <Link to='comments'>show comments</Link>
+
       {product &&
         product.map((item) => {
           if (item.id === +id) {
@@ -53,6 +56,11 @@ const Product = () => {
           }
         })}
 
+      <div>
+        <Routes>
+          <Route path='comments' element={<Comments />}></Route>
+        </Routes>
+      </div>
       <button onClick={() => nav('/products')}>back to products</button>
     </div>
   );
