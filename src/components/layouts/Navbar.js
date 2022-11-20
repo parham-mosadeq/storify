@@ -1,34 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+// redux
 import { useSelector } from 'react-redux';
 // router
 import { Link } from 'react-router-dom';
-// redux
+
+//styles
+import { MainNavbar, MainNavBtn } from '../../shared/MainComponentStyled';
 
 const Navbar = () => {
   const itemsCounter = useSelector((state) => state.btnState.itemsCounter);
+
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <>
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='products'>products</Link>
-        </li>
-        <li>
-          <Link to='aboutUs'>about us</Link>
-        </li>
-        <li>
-          <Link to='cart'>cart</Link>
-        </li>
-      </ul>
-
-      <div>
-        <div>
-          <p>{itemsCounter}</p>
-          <Link to='/cart'>🛒</Link>
-        </div>
-      </div>
+      <MainNavBtn onClick={() => setShowMenu(!showMenu)}>
+        {showMenu ? 'x' : 'o'}
+      </MainNavBtn>
+      <MainNavbar showMenu={showMenu}>
+        <ul>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='products'>products</Link>
+          </li>
+          <li>
+            <Link to='aboutUs'>about us</Link>
+          </li>
+          <li>
+            <Link to='cart'>
+              cart <>{itemsCounter}</>
+            </Link>
+          </li>
+        </ul>
+      </MainNavbar>
     </>
   );
 };
