@@ -32,3 +32,5 @@ const fetchCat = () => {
       .catch((err) => fetchCatFailed(err.message));
   };
 };
+
+export { fetchCat };

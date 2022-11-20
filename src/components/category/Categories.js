@@ -10,21 +10,20 @@ const Categories = () => {
   const dispatch = useDispatch();
 
   const product = useSelector((state) => state.productsState.products);
-  console.log(product);
-  const category = window.location.pathname.split('/')[3];
+  const category = window.location.pathname.split('/')[2];
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
 
-  console.log(category);
-
   return (
     <div>
       {product &&
         product.map((item) => {
-          if (item.category === category) {
-            console.log(item);
+          // checking to see if cat's are the selected ones
+          // the returned cat's from api wasn't the same as cat's in
+          // item object, in order to solve it ".slice() was used"
+          if (item.category.slice(0, 3) === category.slice(0, 3)) {
             const {
               id,
               image,
@@ -50,9 +49,13 @@ const Categories = () => {
                 </div>
               </div>
             );
+          } else {
+            return [];
           }
         })}
 
+      <button onClick={() => nav('/products')}>back to products</button>
+      <button onClick={() => nav('/')}>back to home</button>
     </div>
   );
 };

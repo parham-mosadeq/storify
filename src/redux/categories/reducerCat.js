@@ -30,3 +30,5 @@ const reducerCat = (state = initState, action) => {
       return state;
   }
 };
+
+export default reducerCat;

@@ -31,10 +31,7 @@ const App = () => {
         {/* products routes end */}
 
         {/* cat start */}
-        <Route
-          path='/products/categories/:category'
-          element={<Categories />}
-        ></Route>
+        <Route path='/categories/:cat' element={<Categories />}></Route>
         {/* cat end */}
 
         {/* about us start */}
