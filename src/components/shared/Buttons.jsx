@@ -1,4 +1,5 @@
 import React from 'react';
+//redux
 import { useDispatch, useSelector } from 'react-redux';
 // function
 import { isInCart, quantityCount } from '../../services/functions';
@@ -18,7 +19,6 @@ const Buttons = ({ item, id }) => {
   const faveItems = useSelector((state) => state.btnState.likedItems);
   const mainState = useSelector((state) => state.productsState.products);
 
-  console.log(faveItems);
   return (
     <div>
       {quantityCount(selectedArray, id) === 1 && (

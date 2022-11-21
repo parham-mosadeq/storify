@@ -103,7 +103,6 @@ const reducerBtn = (state = initState, action) => {
           }
         });
       }
-      console.log(state.likedItems);
       return {
         ...state,
         likedItems: state.likedItems,

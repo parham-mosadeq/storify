@@ -28,6 +28,9 @@ const Navbar = () => {
             <Link to='aboutUs'>about us</Link>
           </li>
           <li>
+            <Link to='/favourite'>favourite</Link>
+          </li>
+          <li>
             <Link to='cart'>cart ({itemsCounter})</Link>
           </li>
         </ul>

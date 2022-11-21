@@ -13,7 +13,7 @@ import Navbar from './components/layouts/Navbar';
 import Cart from './components/cart/Cart';
 import Product from './components/products/Product';
 import Categories from './components/category/Categories';
-import Comments from './components/comments/Comments';
+import Favourite from './components/layouts/Favourite';
 const App = () => {
   return (
     <Provider store={store}>
@@ -29,7 +29,7 @@ const App = () => {
         <Route path='/products/:id/*' element={<Product />}></Route>
 
         {/* products routes end */}
-
+        <Route path='/favourite' element={<Favourite />}></Route>
         {/* cat start */}
         <Route path='/categories/:cat' element={<Categories />}></Route>
         {/* cat end */}
