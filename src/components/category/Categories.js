@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/products/actionsProducts';
 // router
 import { useNavigate } from 'react-router-dom';
+import Buttons from '../shared/Buttons';
 
 const Categories = () => {
   const nav = useNavigate();
@@ -47,6 +48,7 @@ const Categories = () => {
                     <i>{count}</i>
                   </p>
                 </div>
+                <Buttons />
               </div>
             );
           } else {

@@ -16,9 +16,8 @@ const Cart = () => {
       <p>total items counts: {state.itemsCounter}</p>
       <div>
         {!state.checkout ? (
-          state.selectedItemsArray ? (
+          state.selectedItemsArray.length ? (
             state.selectedItemsArray.map((item) => {
-              console.log(item);
               return (
                 <div key={item.id}>
                   <div></div>
