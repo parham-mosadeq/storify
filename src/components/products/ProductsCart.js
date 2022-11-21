@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // function
 import { isInCart, quantityCount } from '../../services/functions';
-// import { remove, add, minus } from '../../redux/products/actionsProducts';
+// components
+import Buttons from '../shared/Buttons';
 import {
   remove,
   add,
@@ -52,7 +53,7 @@ const ProductCart = ({ item }) => {
         </div>
         {/* buttons start */}
         <div>
-          {quantityCount(selectedArray, id) === 1 && (
+          {/* {quantityCount(selectedArray, id) === 1 && (
             <button onClick={() => dispatch(remove(id))}>delete</button>
           )}
           {quantityCount(selectedArray, id) > 1 && (
@@ -65,7 +66,8 @@ const ProductCart = ({ item }) => {
             <button onClick={() => dispatch(increment(id))}>+</button>
           ) : (
             <button onClick={() => dispatch(add(id, item))}>Add to Cart</button>
-          )}
+          )} */}
+          <Buttons item={item} id={id} />
         </div>
         {/* buttons end */}
       </article>
