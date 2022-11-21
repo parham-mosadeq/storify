@@ -38,6 +38,13 @@ const checkout = () => {
   };
 };
 
+const favorite = (id, item, mainState) => {
+  return {
+    type: 'FAVE',
+    payload: { id, item, mainState },
+  };
+};
+
 // !buttons handlers end
 
-export { remove, decrement, add, increment, checkout, clear };
+export { remove, decrement, add, increment, checkout, clear, favorite };

@@ -1,6 +1,7 @@
 const initState = {
   selectedItemsArray: [],
   itemsCounter: 0,
+  likedItems: [],
   total: 0,
   checkout: false,
 };
@@ -11,14 +12,12 @@ const sumItems = (items) => {
     0
   );
   let total = items.reduce((total, product) => {
-    console.log(12323);
-    console.log(123);
-    // return (total + product.selectedItems.price * product.quantity, 0).toFixed(
-    //   2
-    // );
+    return (total + product.selectedItems.price * product.quantity, 0).toFixed(
+      2
+    );
   });
 
-  return { itemsCounter };
+  return { itemsCounter, total };
 };
 
 const reducerBtn = (state = initState, action) => {
@@ -92,6 +91,22 @@ const reducerBtn = (state = initState, action) => {
         quantity: 0,
         total: 0,
         checkout: false,
+      };
+
+    case 'FAVE':
+      if (!state.likedItems.find((item) => item.id === action.payload.id)) {
+        const fave = action.payload.mainState.filter((item) => {
+          if (item.id === action.payload.id) {
+            state.likedItems.push({ ...item });
+          } else {
+            return [];
+          }
+        });
+      }
+      console.log(state.likedItems);
+      return {
+        ...state,
+        likedItems: state.likedItems,
       };
     // !buttons end
     default:

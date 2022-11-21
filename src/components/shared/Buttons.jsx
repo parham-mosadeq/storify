@@ -2,19 +2,23 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // function
 import { isInCart, quantityCount } from '../../services/functions';
-
+// redux
 import {
   remove,
   add,
   decrement,
   increment,
+  favorite,
 } from '../../redux/buttons/actionsBtn';
 const Buttons = ({ item, id }) => {
   const dispatch = useDispatch();
   const selectedArray = useSelector(
     (state) => state.btnState.selectedItemsArray
   );
+  const faveItems = useSelector((state) => state.btnState.likedItems);
+  const mainState = useSelector((state) => state.productsState.products);
 
+  console.log(faveItems);
   return (
     <div>
       {quantityCount(selectedArray, id) === 1 && (
@@ -32,7 +36,9 @@ const Buttons = ({ item, id }) => {
         <button onClick={() => dispatch(add(id, item))}>Add to Cart</button>
       )}
 
-      <button>♥</button>
+      <button onClick={() => dispatch(favorite(id, item, mainState))}>
+        {isInCart(faveItems, id) ? '♥' : '  ❤'}
+      </button>
     </div>
   );
 };
