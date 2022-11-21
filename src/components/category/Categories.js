@@ -3,8 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/products/actionsProducts';
 // router
-import { useNavigate } from 'react-router-dom';
-import Buttons from '../shared/Buttons';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Categories = () => {
   const nav = useNavigate();
@@ -37,7 +36,9 @@ const Categories = () => {
               <div key={id}>
                 <img width={100} src={image} alt='' />
                 <div>
-                  <h3>{title}</h3>
+                  <h3>
+                    <Link to={`/products/${id}`}>{title}</Link>
+                  </h3>
                   <p>{description}</p>
                   <p>{price}$</p>
                 </div>
@@ -48,7 +49,6 @@ const Categories = () => {
                     <i>{count}</i>
                   </p>
                 </div>
-                <Buttons />
               </div>
             );
           } else {

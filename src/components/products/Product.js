@@ -76,7 +76,6 @@ const Product = () => {
         </Routes>
       </div>
       <div>
-        <Buttons />
         <button onClick={() => nav('/products')}>back to products</button>
       </div>
     </div>

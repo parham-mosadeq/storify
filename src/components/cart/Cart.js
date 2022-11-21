@@ -18,6 +18,7 @@ const Cart = () => {
         {!state.checkout ? (
           state.selectedItemsArray.length ? (
             state.selectedItemsArray.map((item) => {
+              console.log(item.selectedItemsArray);
               return (
                 <div key={item.id}>
                   <div></div>
