@@ -12,35 +12,40 @@ import womenw from '../../services/assets/womenw.jpg';
 
 const Home = () => {
   const categories = useSelector((state) => state.categoriesState.categories);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCat());
+    if (!categories.length > 0) {
+      dispatch(fetchCat());
+    }
   }, []);
 
   const photosArray = [ele, jewlery, menw, womenw];
 
   return (
-    <div>
-      <h1>see all categories available</h1>
+    <main>
+      <article>
+        <h1>see all categories available</h1>
 
-      {categories.length > 0 ? (
-        categories.map((cat, idx) => {
-          return (
-            <div key={idx}>
-              <Link to={`/categories/${cat}`}>
-                <img width={60} src={photosArray[idx]} alt='' />
-              </Link>
-              <div>
-                <Link to={`/categories/${cat}`}>{cat}</Link>
+        {categories.length > 0 ? (
+          categories.map((cat, idx) => {
+            return (
+              <div key={idx}>
+                <Link to={`/categories/${cat}`}>
+                  <img width={60} src={photosArray[idx]} alt='' />
+                </Link>
+                <div>
+                  <Link to={`/categories/${cat}`}>{cat}</Link>
+                </div>
               </div>
-            </div>
-          );
-        })
-      ) : (
-        <h1>loading....</h1>
-      )}
-    </div>
+            );
+          })
+        ) : (
+          <h1>loading....</h1>
+        )}
+      </article>
+    </main>
   );
 };
 

@@ -3,8 +3,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/products/actionsProducts';
 // router
-import { Link, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import Comments from '../comments/Comments';
+import Buttons from '../shared/Buttons';
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -19,10 +27,17 @@ const Product = () => {
   }, []);
 
   const nav = useNavigate();
+  const loc = useLocation();
+  const path = loc.pathname;
+  const getId = +path.split('/')[2];
+
   return (
     <div>
-      <Link to='comments'>show comments</Link>
-
+      {path.includes('comments') ? (
+        <Link to={`/products/${getId}`}>back to product</Link>
+      ) : (
+        <Link to='comments'>show comments</Link>
+      )}
       {product &&
         product.map((item) => {
           if (item.id === +id) {
@@ -55,13 +70,15 @@ const Product = () => {
             return [];
           }
         })}
-
       <div>
         <Routes>
           <Route path='comments' element={<Comments />}></Route>
         </Routes>
       </div>
-      <button onClick={() => nav('/products')}>back to products</button>
+      <div>
+        <Buttons />
+        <button onClick={() => nav('/products')}>back to products</button>
+      </div>
     </div>
   );
 };
