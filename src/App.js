@@ -17,7 +17,6 @@ import Favourite from './components/layouts/Favourite';
 const App = () => {
   return (
     <Provider store={store}>
-      <div></div>
       <>
         <Navbar />
       </>
@@ -38,7 +37,6 @@ const App = () => {
         <Route path='/aboutUs' element={<AboutUs />}></Route>
         {/* about us end */}
 
-        <Route path='/cart' element={<Cart />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
 
         {/* notfound */}
