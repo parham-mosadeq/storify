@@ -7,7 +7,7 @@ const Favourite = () => {
   const faveItems = useSelector((state) => state.btnState.likedItems);
   return (
     <div>
-      {faveItems.length ? (
+      {faveItems ? (
         faveItems.map((item) => {
           return (
             <div key={item.id}>

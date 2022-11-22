@@ -1,49 +1,50 @@
 import styled from 'styled-components';
 
 const MainNavbar = styled.nav`
-  background-color: #e9e5e553;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  z-index: 11;
-  /* visibility: hidden; */
+  background-color: #dcdcdc;
+  margin: 0;
+  padding: 0;
+  ${(menu) => (!menu.showMenu ? 'display:none;' : 'display:block;')}
   ul {
-    padding: 0;
     margin: 0;
+    padding: 0;
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    li {
-      margin: 1rem 0;
-      padding: 0 1rem 0;
 
+    li {
+      padding: 1rem 0;
       a {
-        color: black;
+        color: #860d0d;
         text-decoration: none;
-        cursor: pointer;
-        text-transform: capitalize;
+        padding: 1rem;
         transition: all 0.2s ease;
+        text-transform: capitalize;
       }
+
       a:hover {
-        color: #111;
-        padding-left: 4px;
+        color: blue;
       }
     }
   }
 
-  @media (min-width: 501px) {
+  @media (min-width: 510px) {
+    display: block;
     width: 100%;
-    top: 0;
-    right: 0;
-    left: 0;
-    background-color: #e9e5e5;
-    ul {
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
 
-      li {
-        a:hover {
-          padding-left: 0;
-        }
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 740px) {
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      a {
+        font-size: 17px;
       }
     }
   }
@@ -60,8 +61,11 @@ const MainNavBtn = styled.button`
   color: #0095ff;
   background-color: transparent;
   font-size: large;
-  @media (min-width: 501px) {
+  @media (min-width: 510px) {
     display: none;
   }
 `;
+
+
+
 export { MainNavbar, MainNavBtn };
