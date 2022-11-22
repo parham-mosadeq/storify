@@ -107,6 +107,22 @@ const reducerBtn = (state = initState, action) => {
         ...state,
         likedItems: state.likedItems,
       };
+
+    case 'REMOVE_FAVE':
+      const removedFavesArr = [];
+      const removedFaves = action.payload.item.filter((item) => {
+        console.log(item);
+        if (item.id !== action.payload.id) {
+          removedFavesArr.push(item);
+        } else {
+          return [];
+        }
+      });
+      return {
+        ...state,
+        likedItems: [...removedFavesArr],
+      };
+
     // !buttons end
     default:
       return state;

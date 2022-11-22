@@ -1,13 +1,16 @@
 import React from 'react';
 
 //redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFave } from '../../redux/buttons/actionsBtn';
+// router
 import { Link } from 'react-router-dom';
 const Favourite = () => {
   const faveItems = useSelector((state) => state.btnState.likedItems);
+  const dispatch = useDispatch();
   return (
     <div>
-      {faveItems ? (
+      {faveItems.length ? (
         faveItems.map((item) => {
           return (
             <div key={item.id}>
@@ -22,11 +25,18 @@ const Favourite = () => {
 
                 <p>{item.price}$</p>
               </div>
+              <button
+                onClick={() => {
+                  dispatch(removeFave(item.id, faveItems));
+                }}
+              >
+                remove from favourite
+              </button>
             </div>
           );
         })
       ) : (
-        <h1>add something to favourite</h1>
+        <h1>your favourite bag is empty :(</h1>
       )}
     </div>
   );

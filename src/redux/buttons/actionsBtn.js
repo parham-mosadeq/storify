@@ -44,7 +44,22 @@ const favorite = (id, item, mainState) => {
     payload: { id, item, mainState },
   };
 };
+const removeFave = (id, item, mainState) => {
+  return {
+    type: 'REMOVE_FAVE',
+    payload: { id, item, mainState },
+  };
+};
 
 // !buttons handlers end
 
-export { remove, decrement, add, increment, checkout, clear, favorite };
+export {
+  remove,
+  decrement,
+  add,
+  increment,
+  checkout,
+  clear,
+  favorite,
+  removeFave,
+};
