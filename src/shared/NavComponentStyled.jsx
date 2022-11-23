@@ -12,6 +12,7 @@ const MainNavbar = styled.nav`
 
     li {
       padding: 1rem 0;
+
       a {
         color: #860d0d;
         text-decoration: none;
@@ -43,6 +44,10 @@ const MainNavbar = styled.nav`
       align-items: center;
       justify-content: space-around;
 
+      li: {
+        background-color: none;
+      }
+
       a {
         font-size: 17px;
       }
@@ -65,7 +70,5 @@ const MainNavBtn = styled.button`
     display: none;
   }
 `;
-
-
 
 export { MainNavbar, MainNavBtn };

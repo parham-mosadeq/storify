@@ -9,7 +9,13 @@ import menw from '../../services/assets/menw.jpg';
 import womenw from '../../services/assets/womenw.jpg';
 //router
 import { Link } from 'react-router-dom';
-
+// styles
+import {
+  HomeContainer,
+  ImgContainer,
+  LinkContainer,
+  ItemContainer,
+} from '../../shared/HomeComponentStyled';
 const Home = () => {
   const categories = useSelector((state) => state.categoriesState.categories);
   const dispatch = useDispatch();
@@ -21,20 +27,22 @@ const Home = () => {
   const photosArray = [ele, jewlery, menw, womenw];
 
   return (
-    <div>
+    <HomeContainer>
       {categories.length > 0
         ? categories.map((cat, idx) => {
             return (
-              <div key={idx}>
-                <img width={60} src={photosArray[idx]} alt={cat.title} />
-                <div>
+              <ItemContainer key={idx}>
+                <ImgContainer>
+                  <img src={photosArray[idx]} alt={cat.title} />
+                </ImgContainer>
+                <LinkContainer>
                   <Link to={`/categories/${cat}`}>{cat}</Link>
-                </div>
-              </div>
+                </LinkContainer>
+              </ItemContainer>
             );
           })
         : null}
-    </div>
+    </HomeContainer>
   );
 };
 

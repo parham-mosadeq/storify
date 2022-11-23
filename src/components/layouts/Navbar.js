@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 //styles
-import { MainNavbar, MainNavBtn } from '../../shared/MainComponentStyled';
+import { MainNavbar, MainNavBtn } from '../../shared/NavComponentStyled';
 
 const Navbar = () => {
   const itemsCounter = useSelector((state) => state.btnState.itemsCounter);
