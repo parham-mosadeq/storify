@@ -8,6 +8,14 @@ import { fetchComments } from '../../redux/comments/actionsComments';
 import ProductCart from './ProductsCart';
 import Loader from '../layouts/Loader';
 import Filters from '../filters/Filters';
+
+// styles
+import {
+  MainContainer,
+  ProductsContainer,
+  ProductContainer,
+  FiltersContainer,
+} from '../../shared/MainProductsComponentStyled';
 const Products = () => {
   const dispatch = useDispatch();
 
@@ -22,25 +30,26 @@ const Products = () => {
   }, []);
 
   return (
-    <div>
-      <div>
-        <Filters />
-      </div>
-      <h1> products</h1>
-      <div>
-        {products.length > 0 && !isLoading ? (
-          products.map((item) => {
-            return (
-              <div key={item.id}>
-                <ProductCart item={item} />
-              </div>
-            );
-          })
-        ) : (
-          <Loader />
-        )}
-      </div>
-    </div>
+    <>
+      <Filters />
+      <MainContainer>
+        <h1> products</h1>
+        <FiltersContainer></FiltersContainer>
+        <ProductsContainer>
+          {products.length > 0 && !isLoading ? (
+            products.map((item) => {
+              return (
+                <ProductContainer key={item.id}>
+                  <ProductCart item={item} />
+                </ProductContainer>
+              );
+            })
+          ) : (
+            <Loader />
+          )}
+        </ProductsContainer>
+      </MainContainer>
+    </>
   );
 };
 

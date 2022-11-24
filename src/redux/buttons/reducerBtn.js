@@ -111,7 +111,6 @@ const reducerBtn = (state = initState, action) => {
     case 'REMOVE_FAVE':
       const removedFavesArr = [];
       const removedFaves = action.payload.item.filter((item) => {
-        console.log(item);
         if (item.id !== action.payload.id) {
           removedFavesArr.push(item);
         } else {
