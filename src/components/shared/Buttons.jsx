@@ -12,12 +12,13 @@ import {
   favorite,
 } from '../../redux/buttons/actionsBtn';
 const Buttons = ({ item, id }) => {
+  const tstArr = [1, 2, 3];
   const dispatch = useDispatch();
-  const selectedArray = useSelector(
-    (state) => state.btnState.selectedItemsArray
-  );
-  const faveItems = useSelector((state) => state.btnState.likedItems);
-  const mainState = useSelector((state) => state.productsState.products);
+  const selectedArray =
+    useSelector((state) => state.btnState.selectedItemsArray) ?? tstArr;
+  const faveItems = useSelector((state) => state.btnState.likedItems) ?? tstArr;
+  const mainState =
+    useSelector((state) => state.productsState.products) ?? tstArr;
 
   return (
     <div>

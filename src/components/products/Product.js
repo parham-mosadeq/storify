@@ -5,15 +5,23 @@ import { fetchProducts } from '../../redux/products/actionsProducts';
 // router
 import {
   Link,
-  Outlet,
   Route,
   Routes,
   useLocation,
   useNavigate,
 } from 'react-router-dom';
+// components
 import Comments from '../comments/Comments';
-import Buttons from '../shared/Buttons';
-
+// styles
+import {
+  MainDivContainer,
+  ProductContainer,
+  Description,
+  Price,
+  Rate,
+  Stock,
+  BtnContainers,
+} from '../../shared/ProductComponentStyled';
 const Product = () => {
   const dispatch = useDispatch();
 
@@ -32,12 +40,7 @@ const Product = () => {
   const getId = +path.split('/')[2];
 
   return (
-    <div>
-      {path.includes('comments') ? (
-        <Link to={`/products/${getId}`}>back to product</Link>
-      ) : (
-        <Link to='comments'>show comments</Link>
-      )}
+    <MainDivContainer>
       {product &&
         product.map((item) => {
           if (item.id === +id) {
@@ -50,21 +53,21 @@ const Product = () => {
               rating: { rate, count },
             } = item;
             return (
-              <div key={id}>
+              <ProductContainer key={id}>
                 <img width={100} src={image} alt='' />
                 <div>
                   <h3>{title}</h3>
-                  <p>{description}</p>
-                  <p>{price}$</p>
+                  <Description>{description}</Description>
+                  <Price>{price}$</Price>
                 </div>
                 <div>
-                  <p>rate:{rate}*</p>
-                  <p>
+                  <Rate>rate:{rate}*</Rate>
+                  <Stock>
                     stock
-                    <i>{count}</i>
-                  </p>
+                    <>{count}</>
+                  </Stock>
                 </div>
-              </div>
+              </ProductContainer>
             );
           } else {
             return [];
@@ -75,10 +78,19 @@ const Product = () => {
           <Route path='comments' element={<Comments />}></Route>
         </Routes>
       </div>
-      <div>
+      <BtnContainers>
+        {path.includes('comments') ? (
+          <button onClick={() => nav(`/products/${getId}`)}>
+            back to product
+          </button>
+        ) : (
+          <button onClick={() => nav(`comments`)} to='comments'>
+            show comments
+          </button>
+        )}
         <button onClick={() => nav('/products')}>back to products</button>
-      </div>
-    </div>
+      </BtnContainers>
+    </MainDivContainer>
   );
 };
 

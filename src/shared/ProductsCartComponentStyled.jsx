@@ -11,8 +11,7 @@ const MainContainer = styled.main`
 
   img {
     display: block;
-    margin: 0 auto;
-    margin-bottom: 0.3rem;
+    margin: 1rem auto;
   }
 
   p {
@@ -26,6 +25,20 @@ const MainContainer = styled.main`
     transition: color 0.3s ease;
     :hover {
       color: black;
+    }
+  }
+
+  article {
+    background-color: #a7a7a727;
+    padding: 0.4rem 0.8rem;
+    margin: 0.6rem 0.1rem;
+    border-radius: 10px;
+    div:last-child {
+      border-radius: 8px;
+      background-color: gray;
+      padding: 3px 7px;
+      width: max-content;
+      margin: 0 auto;
     }
   }
 `;
