@@ -15,8 +15,6 @@ const MainContainer = styled.main`
   }
 
   @media (min-width: 510px) {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
@@ -39,7 +37,6 @@ const ProductsContainer = styled.article`
 
 const ProductContainer = styled.div`
   margin: 0.8rem auto;
-  border: 1px solid;
   padding: 1rem;
   max-width: 350px;
   max-height: 500px;

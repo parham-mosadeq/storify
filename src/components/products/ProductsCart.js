@@ -5,6 +5,9 @@ import { trimDesc, trimTitle } from '../../services/functions';
 import { Link } from 'react-router-dom';
 // components
 import Buttons from '../shared/Buttons';
+
+// styled
+import { MainContainer } from '../../shared/ProductsCartComponentStyled';
 const ProductCart = ({ item }) => {
   // *destructuring objects
   const { id, title, price, description, image, category } = item;
@@ -16,7 +19,7 @@ const ProductCart = ({ item }) => {
   };
 
   return (
-    <main>
+    <MainContainer>
       {/* container start */}
 
       <article>
@@ -44,7 +47,7 @@ const ProductCart = ({ item }) => {
       </article>
 
       {/* container end */}
-    </main>
+    </MainContainer>
   );
 };
 
