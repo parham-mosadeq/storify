@@ -32,6 +32,7 @@ const Product = () => {
     if (product.length === 0) {
       dispatch(fetchProducts());
     }
+    return () => [];
   }, []);
 
   const nav = useNavigate();
@@ -40,57 +41,59 @@ const Product = () => {
   const getId = +path.split('/')[2];
 
   return (
-    <MainDivContainer>
-      {product &&
-        product.map((item) => {
-          if (item.id === +id) {
-            const {
-              id,
-              image,
-              title,
-              description,
-              price,
-              rating: { rate, count },
-            } = item;
-            return (
-              <ProductContainer key={id}>
-                <img width={100} src={image} alt='' />
-                <div>
-                  <h3>{title}</h3>
-                  <Description>{description}</Description>
-                  <Price>{price}$</Price>
-                </div>
-                <div>
-                  <Rate>rate:{rate}*</Rate>
-                  <Stock>
-                    stock
-                    <>{count}</>
-                  </Stock>
-                </div>
-              </ProductContainer>
-            );
-          } else {
-            return [];
-          }
-        })}
-      <div>
-        <Routes>
-          <Route path='comments' element={<Comments />}></Route>
-        </Routes>
-      </div>
-      <BtnContainers>
-        {path.includes('comments') ? (
-          <button onClick={() => nav(`/products/${getId}`)}>
-            back to product
-          </button>
-        ) : (
-          <button onClick={() => nav(`comments`)} to='comments'>
-            show comments
-          </button>
-        )}
-        <button onClick={() => nav('/products')}>back to products</button>
-      </BtnContainers>
-    </MainDivContainer>
+    <>
+      <MainDivContainer>
+        {product &&
+          product.map((item) => {
+            if (item.id === +id) {
+              const {
+                id,
+                image,
+                title,
+                description,
+                price,
+                rating: { rate, count },
+              } = item;
+              return (
+                <ProductContainer key={id}>
+                  <img width={100} src={image} alt='' />
+                  <div>
+                    <h3>{title}</h3>
+                    <Description>{description}</Description>
+                    <Price>{price}$</Price>
+                  </div>
+                  <div>
+                    <Rate>rate:{rate}*</Rate>
+                    <Stock>
+                      stock
+                      <>{count}</>
+                    </Stock>
+                  </div>
+                </ProductContainer>
+              );
+            } else {
+              return [];
+            }
+          })}
+        <div>
+          <Routes>
+            <Route path='comments' element={<Comments />}></Route>
+          </Routes>
+        </div>
+        <BtnContainers>
+          {path.includes('comments') ? (
+            <button onClick={() => nav(`/products/${getId}`)}>
+              back to product
+            </button>
+          ) : (
+            <button onClick={() => nav(`comments`)} to='comments'>
+              show comments
+            </button>
+          )}
+          <button onClick={() => nav('/products')}>back to products</button>
+        </BtnContainers>
+      </MainDivContainer>
+    </>
   );
 };
 

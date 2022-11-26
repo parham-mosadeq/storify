@@ -16,6 +16,14 @@ const ProductContainer = styled.div`
     width: 50%;
   }
 
+  @media (min-width: 750px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    padding-right: 3rem;
+  }
+
   h3 {
     border-bottom: 1px solid;
     border-radius: 3px;
