@@ -38,8 +38,6 @@ const reducerProducts = (state = initState, action) => {
           lowPriceArray.push(ele);
         });
 
-        console.log(action.payload.target);
-
         return {
           ...state,
           products: lowPriceArray.sort((a, b) => a.price - b.price),

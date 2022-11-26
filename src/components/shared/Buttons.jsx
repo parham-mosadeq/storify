@@ -11,6 +11,8 @@ import {
   increment,
   favorite,
 } from '../../redux/buttons/actionsBtn';
+// icons
+import { FaHeart, FaHeartBroken } from 'react-icons/fa';
 const Buttons = ({ item, id }) => {
   const tstArr = [1, 2, 3];
   const dispatch = useDispatch();
@@ -38,7 +40,7 @@ const Buttons = ({ item, id }) => {
       )}
 
       <button onClick={() => dispatch(favorite(id, item, mainState))}>
-        {isInCart(faveItems, id) ? '♥' : '  ❤'}
+        {isInCart(faveItems, id) ? <FaHeartBroken /> : <FaHeart />}
       </button>
     </div>
   );

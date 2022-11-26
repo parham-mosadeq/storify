@@ -17,6 +17,8 @@ import {
   HighPriceContainer,
   CatItemsContainer,
 } from '../../shared/FilterComponentStyled';
+// icons
+import { FaSortAmountDown, FaSocks } from 'react-icons/fa';
 const Filters = () => {
   const mainArray = useSelector((state) => state.productsState.products);
 
@@ -30,7 +32,9 @@ const Filters = () => {
       {/* filters start */}
 
       <>
-        <p onClick={() => setShowPriceFilters(!showPriceFilters)}>💸</p>
+        <p onClick={() => setShowPriceFilters(!showPriceFilters)}>
+          <FaSortAmountDown />
+        </p>
         <PriceItemsContainer showPriceFilters={showPriceFilters}>
           {/* cheapest start */}
 
@@ -63,7 +67,9 @@ const Filters = () => {
       </>
 
       {/* cat starts */}
-      <p onClick={() => setShowCatFilters(!showCatFilters)}>👣</p>
+      <p onClick={() => setShowCatFilters(!showCatFilters)}>
+        <FaSocks />
+      </p>
       <CatItemsContainer showCatFilters={showCatFilters}>
         <>
           <div>

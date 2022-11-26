@@ -3,13 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/products/actionsProducts';
 // router
-import {
-  Link,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 // components
 import Comments from '../comments/Comments';
 // styles

@@ -4,7 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/products/actionsProducts';
 // router
 import { useNavigate, Link } from 'react-router-dom';
-
+// styles
+import {
+  MainCatContainer,
+  ItemCatContainer,
+  P,
+} from '../../shared/CategoriesComponentStyled';
+import {
+  Rate,
+  Stock,
+  Price,
+  BtnContainers,
+} from '../../shared/ProductComponentStyled';
 const Categories = () => {
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -17,7 +28,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <div>
+    <MainCatContainer>
       {product &&
         product.map((item) => {
           // checking to see if cat's are the selected ones
@@ -33,32 +44,34 @@ const Categories = () => {
               rating: { rate, count },
             } = item;
             return (
-              <div key={id}>
+              <ItemCatContainer key={id}>
                 <img width={100} src={image} alt='' />
                 <div>
                   <h3>
                     <Link to={`/products/${id}`}>{title}</Link>
                   </h3>
-                  <p>{description}</p>
-                  <p>{price}$</p>
+                  <P>{description}</P>
+                  <Price>{price}$</Price>
                 </div>
                 <div>
-                  <p>rate:{rate}*</p>
-                  <p>
+                  <Rate>rate:{rate}*</Rate>
+                  <Stock>
                     stock
-                    <i>{count}</i>
-                  </p>
+                    <>{count}</>
+                  </Stock>
                 </div>
-              </div>
+              </ItemCatContainer>
             );
           } else {
             return [];
           }
         })}
 
-      <button onClick={() => nav('/products')}>back to products</button>
-      <button onClick={() => nav('/')}>back to home</button>
-    </div>
+      <BtnContainers>
+        <button onClick={() => nav('/products')}>back to products</button>
+        <button onClick={() => nav('/')}>back to home</button>
+      </BtnContainers>
+    </MainCatContainer>
   );
 };
 
