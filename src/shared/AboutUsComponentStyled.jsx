@@ -11,6 +11,11 @@ const MainAboutUsContainer = styled.main`
   height: 100vh;
   z-index: 100;
 
+  span {
+    letter-spacing: 0;
+    font-style: italic;
+  }
+
   div:first-child {
     text-transform: capitalize;
     letter-spacing: 1.2px;
@@ -39,6 +44,10 @@ const MainAboutUsContainer = styled.main`
           color: black;
           transition: color 0.3s linear;
           cursor: pointer;
+          z-index: 111;
+          ::before {
+            content: '';
+          }
           :hover {
             color: #070789;
           }
