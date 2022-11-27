@@ -1,6 +1,4 @@
 import React from 'react';
-//router
-import { Link } from 'react-router-dom';
 //icons
 import { FaGithub, FaLinkedin, FaMailBulk } from 'react-icons/fa';
 // styles
