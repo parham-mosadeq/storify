@@ -5,10 +5,9 @@ const MainFavContainer = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   max-width: 100vw;
   overflow-x: hidden;
-  margin: 1rem auto;
+  margin: 4rem auto;
 
   h1 {
     text-align: center;

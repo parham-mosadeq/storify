@@ -1,38 +1,54 @@
 import React from 'react';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 // functions
 import { clear, checkout } from '../../redux/buttons/actionsBtn';
+// styles
+import {
+  MainCartContainer,
+  ItemCartContainer,
+  ItemCartInfoContainer,
+  Wrapper,
+  P,
+} from '../../shared/CartComponentStyled';
 
 const Cart = () => {
   const state = useSelector((state) => state.btnState);
-
   const dispatch = useDispatch();
+  const nav = useNavigate();
 
-  console.log(state);
   return (
-    <div>
+    <MainCartContainer>
       {/* <p>total items price: {state.total}</p> */}
-      <p>total items counts: {state.itemsCounter}</p>
-      <div>
+      <P>total items counts: {state.itemsCounter}</P>
+      <Wrapper>
         {!state.checkout ? (
-          state.selectedItemsArray.length ? (
+          state.selectedItemsArray ? (
             state.selectedItemsArray.map((item) => {
-              console.log(item.selectedItemsArray);
               return (
-                <div key={item.id}>
-                  <div></div>
-                  <img
-                    width={60}
-                    src={item.selectedItems.image}
-                    alt={item.selectedItems.title}
-                  />
+                <ItemCartContainer key={item.id}>
                   <div>
-                    <p>name: {item.selectedItems.title}</p>
-                    <p>price: {item.selectedItems.price}$</p>
-                    <p>chosen products quantity: {item.quantity}</p>
+                    <img
+                      src={item.selectedItems.image}
+                      alt={item.selectedItems.title}
+                    />
                   </div>
-                </div>
+                  <ItemCartInfoContainer>
+                    <p>
+                      <span>name:</span>
+                      {item.selectedItems.title}
+                    </p>
+                    <p>
+                      <span>price:</span>
+                      {item.selectedItems.price}$
+                    </p>
+                    <p>
+                      <span>chosen products quantity:</span>
+                      {item.quantity}
+                    </p>
+                  </ItemCartInfoContainer>
+                </ItemCartContainer>
               );
             })
           ) : (
@@ -41,10 +57,10 @@ const Cart = () => {
         ) : (
           <p>checkout</p>
         )}
-      </div>
+      </Wrapper>
       <div>
         {!state.itemsCounter ? (
-          <button onClick={() => dispatch(clear())}>clear Cart</button>
+          <button onClick={() => nav('/products')}>products</button>
         ) : (
           <>
             <button onClick={() => dispatch(clear())}>clear Cart</button>
@@ -52,7 +68,7 @@ const Cart = () => {
           </>
         )}
       </div>
-    </div>
+    </MainCartContainer>
   );
 };
 

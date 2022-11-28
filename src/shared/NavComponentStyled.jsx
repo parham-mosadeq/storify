@@ -62,6 +62,7 @@ const MainNavBtn = styled.button`
   display: block;
   z-index: 100;
   cursor: pointer;
+
   border: 0;
   color: #0095ff;
   background-color: transparent;
