@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 // function
@@ -12,7 +12,23 @@ import {
   favorite,
 } from '../../redux/buttons/actionsBtn';
 // icons
-import { FaHeart, FaHeartBroken } from 'react-icons/fa';
+import {
+  FaHeart,
+  FaHeartBroken,
+  FaShoppingBag,
+  FaPlus,
+  FaMinus,
+  FaTrash,
+} from 'react-icons/fa';
+// styles
+import {
+  AddToCartBtn,
+  FaveBtn,
+  BtnContainer,
+  TrashBtn,
+  PlusBtn,
+  MinusBtn,
+} from '../../shared/BtnComponentStyled';
 const Buttons = ({ item, id }) => {
   const tstArr = [1, 2, 3];
   const dispatch = useDispatch();
@@ -23,26 +39,36 @@ const Buttons = ({ item, id }) => {
     useSelector((state) => state.productsState.products) ?? tstArr;
 
   return (
-    <div>
+    <BtnContainer>
       {quantityCount(selectedArray, id) === 1 && (
-        <button onClick={() => dispatch(remove(id))}>delete</button>
+        <TrashBtn onClick={() => dispatch(remove(id))}>
+          <FaTrash />
+        </TrashBtn>
       )}
       {quantityCount(selectedArray, id) > 1 && (
-        <button onClick={() => dispatch(decrement(id))}>-</button>
+        <MinusBtn onClick={() => dispatch(decrement(id))}>
+          <FaMinus />
+        </MinusBtn>
       )}
       {quantityCount(selectedArray, id) > 0 && (
         <span> {quantityCount(selectedArray, id)} </span>
       )}
       {isInCart(selectedArray, id) ? (
-        <button onClick={() => dispatch(increment(id))}>+</button>
+        <PlusBtn onClick={() => dispatch(increment(id))}>
+          <FaPlus />
+        </PlusBtn>
       ) : (
-        <button onClick={() => dispatch(add(id, item))}>Add to Cart</button>
+        <>
+          <AddToCartBtn onClick={() => dispatch(add(id, item))}>
+            <FaShoppingBag />
+          </AddToCartBtn>
+        </>
       )}
 
-      <button onClick={() => dispatch(favorite(id, item, mainState))}>
+      <FaveBtn onClick={() => dispatch(favorite(id, item, mainState))}>
         {isInCart(faveItems, id) ? <FaHeartBroken /> : <FaHeart />}
-      </button>
-    </div>
+      </FaveBtn>
+    </BtnContainer>
   );
 };
 
